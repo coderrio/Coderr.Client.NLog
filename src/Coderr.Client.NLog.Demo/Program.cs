@@ -6,24 +6,30 @@ namespace Coderr.Client.NLog.Demo
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var url = new Uri("http://localhost:50473/");
+            var url = new Uri("http://localhost:60473/");
             Err.Configuration.Credentials(url,
-                "fab233e3492d4cc68f64c7770db795a3",
-                "3c28c12d76ad4b5586f216232bd8c7c2");
+                "1a68bc3e123c48a3887877561b0982e2",
+                "bd73436e965c4f3bb0578f57c21fde69");
+
+
+            Err.Configuration.CatchNlogExceptions();
 
             var log = LogManager.GetCurrentClassLogger();
+            log.Info("Started");
+
             try
             {
                 throw new InvalidDataException("Hoh");
             }
             catch (Exception ex)
             {
-                log.Error("Failed", ex);
+                log.Error(ex, "My message");
             }
 
-            Console.ReadLine();
+
+            Console.WriteLine("Done");
         }
     }
 }

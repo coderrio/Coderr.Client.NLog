@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,12 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Coderr.Client.NetStd" Version="1.2.0" />
+    <PackageReference Include="Coderr.Client" Version="2.0.1" />
     <PackageReference Include="NLog.Config" Version="4.5.11" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Coderr.Client.NLog\Coderr.Client.NLog.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Coderr.Client.NLog.xml</DocumentationFile>
     <RootNamespace>Coderr.Client.NLog</RootNamespace>
 
-    <PackageReleaseNotes>First release</PackageReleaseNotes>
-    <Version>1.0.0</Version>
+    <PackageReleaseNotes>Updated to the new core package to support both .NET 4.6.1 and .NET Core</PackageReleaseNotes>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -15,12 +15,12 @@
     <Authors>1TCompany AB</Authors>
     <Description>Adapter for NLog, reports all logged exceptions to Coderr</Description>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2018 © 1TCompany AB. All rights reserved.</Copyright>
+    <Copyright>Copyright 2020 © 1TCompany AB. All rights reserved.</Copyright>
     <PackageTags>logger nlog exceptions analysis exception-handler</PackageTags>
-    <PackageIconUrl>https://coderr.io/images/nuget_icon.png</PackageIconUrl>
+    <PackageIcon>NugetIcon.png</PackageIcon>
     <RepositoryUrl>https://github.com/coderrio/coderr.client.nlog</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/coderrio/Coderr.Client.NLog/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://coderr.io</PackageProjectUrl>
   </PropertyGroup>
 
@@ -29,27 +29,16 @@
       <Pack>true</Pack>
       <PackagePath>README.txt</PackagePath>
     </Content>
+    <None Include="NugetIcon.png" Pack="true" PackagePath=""/>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="NLog" Version="4.5.11" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net452'">
+  <ItemGroup>
     <PackageReference Include="Coderr.Client">
-      <Version>1.1.0</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Coderr.Client.NetStd">
-      <Version>1.2.0</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
-    <PackageReference Include="Coderr.Client.NetStd">
-      <Version>1.2.0</Version>
+      <Version>2.0.1</Version>
     </PackageReference>
   </ItemGroup>
 
