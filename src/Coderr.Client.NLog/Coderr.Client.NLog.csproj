@@ -12,10 +12,10 @@
 
   <PropertyGroup>
     <PackageId>Coderr.Client.NLog</PackageId>
-    <Authors>1TCompany AB</Authors>
+    <Authors>Coderr AB</Authors>
     <Description>Adapter for NLog, reports all logged exceptions to Coderr</Description>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2010 © Coderr AB. All rights reserved.</Copyright>
+    <Copyright>Copyright 2022 © Coderr AB. All rights reserved.</Copyright>
     <PackageTags>logger nlog exceptions analysis exception-handler</PackageTags>
     <PackageIcon>NugetIcon.png</PackageIcon>
     <RepositoryUrl>https://github.com/coderrio/coderr.client.nlog</RepositoryUrl>
