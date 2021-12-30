@@ -1,5 +1,8 @@
-﻿using Coderr.Client.Contracts;
+﻿using System.Globalization;
+using Coderr.Client.ContextCollections;
+using Coderr.Client.Contracts;
 using Coderr.Client.NLog.ContextProviders;
+using Coderr.Client.Reporters;
 using NLog;
 using NLog.Targets;
 
@@ -27,12 +30,22 @@ namespace Coderr.Client.NLog
             if (logEvent.Exception == null)
                 return;
 
-            Err.Report(logEvent.Exception, new
+            var context = new ErrorReporterContext(this, logEvent.Exception);
+            var data = new
             {
-                ErrTags = "nlog,level-" + logEvent.Level,
+                ErrTags = "nlog,loglevel-" + logEvent.Level,
                 logEvent.TimeStamp,
+                logEvent.CallerClassName,
+                logEvent.CallerMemberName,
+                logEvent.LoggerName,
                 Message = logEvent.FormattedMessage
-            });
+            }.ToContextCollection("LogEntry");
+            context.ContextCollections.Add(data);
+
+            var col = context.ContextCollections.GetCoderrCollection();
+            col.Properties[CoderrCollectionProperties.HighlightCollection] = "LogEntry";
+
+            Err.Report(context);
         }
 
         private int ConvertLevel(LogLevel level)

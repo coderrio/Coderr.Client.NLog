@@ -6,8 +6,8 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Coderr.Client.NLog.xml</DocumentationFile>
     <RootNamespace>Coderr.Client.NLog</RootNamespace>
 
-    <PackageReleaseNotes>Updated to the new core package to support both .NET 4.6.1 and .NET Core</PackageReleaseNotes>
-    <Version>2.0.0</Version>
+    <PackageReleaseNotes>Updated nlog.</PackageReleaseNotes>
+    <Version>2.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -15,7 +15,7 @@
     <Authors>1TCompany AB</Authors>
     <Description>Adapter for NLog, reports all logged exceptions to Coderr</Description>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright 2020 © 1TCompany AB. All rights reserved.</Copyright>
+    <Copyright>Copyright 2010 © Coderr AB. All rights reserved.</Copyright>
     <PackageTags>logger nlog exceptions analysis exception-handler</PackageTags>
     <PackageIcon>NugetIcon.png</PackageIcon>
     <RepositoryUrl>https://github.com/coderrio/coderr.client.nlog</RepositoryUrl>
@@ -29,16 +29,16 @@
       <Pack>true</Pack>
       <PackagePath>README.txt</PackagePath>
     </Content>
-    <None Include="NugetIcon.png" Pack="true" PackagePath=""/>
+    <None Include="NugetIcon.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NLog" Version="4.5.11" />
+    <PackageReference Include="NLog" Version="4.7.13" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Coderr.Client">
-      <Version>2.0.1</Version>
+      <Version>2.0.5</Version>
     </PackageReference>
   </ItemGroup>
 

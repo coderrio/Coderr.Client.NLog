@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Reflection;
 using Coderr.Client.Config;
 using Coderr.Client.NLog.ContextProviders;
 using NLog;
 using NLog.Config;
+using NLog.Targets;
 
 // ReSharper disable once CheckNamespace
 namespace Coderr.Client.NLog
@@ -27,15 +29,19 @@ namespace Coderr.Client.NLog
             //Target.Register<CoderrLogTarget>("Coderr");
             //            LogManager.Configuration.AddTarget("Coderr",new CoderrLogTarget());
 
-            var target = new CoderrLogTarget();
-            LogManager.Configuration.AddTarget("Coderr", target);
+            
+            var target = new CoderrLogTarget {Name = "Coderr"};
+            LogManager.Configuration.AddTarget(target);
+
+            var method = target.GetType().GetMethod("Initialize", BindingFlags.NonPublic | BindingFlags.Instance);
+            method?.Invoke(target, new object[] { LogManager.Configuration });
 
             if (minimumLevel != null && minimumLevel != LogLevel.Off)
                 LogManager.Configuration.AddRule(minimumLevel, LogLevel.Fatal, "Coderr");
             else
                 LogManager.Configuration.AddRuleForAllLevels("Coderr");
+            
             LogManager.Configuration.Reload();
-
             LogManager.ConfigurationChanged += OnConfigChanged;
         }
 
